@@ -11,8 +11,9 @@
     <link rel="shortcut icon" href="img/fis.ico">
     <title>FIS</title>
     <!-- Main styles for this application -->
-    
-    <link href="/css/plantilla.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plantilla.css">
+    <link rel="stylesheet" href="/css/app.css" type="text/css">
+        
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
