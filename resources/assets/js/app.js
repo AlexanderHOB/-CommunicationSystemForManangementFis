@@ -6,7 +6,7 @@
  */
 
 require('./bootstrap');
-
+window.$ = window.jQuery = require('jquery'); 
 window.Vue = require('vue');
 
 /**
@@ -15,8 +15,17 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+Vue.component('cargo', require('./components/Cargo.vue'));
+Vue.component('codigo', require('./components/Codigo.vue'));
+Vue.component('tipo', require('./components/Tipo.vue'));
+Vue.component('rol', require('./components/Rol.vue'));
+Vue.component('documento', require('./components/Documento.vue'));
+Vue.component('user', require('./components/Usuario.vue'));
+Vue.component('proceso', require('./components/Proceso.vue'));
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data:{
+        menu:0
+    }
 });

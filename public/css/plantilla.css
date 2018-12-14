@@ -9266,3 +9266,31 @@ hr.transparent {
       float: left; }
   *[dir="rtl"] .callout-default {
     border-right-color: #536c79; }
+
+body {
+     background: #262623;
+}
+
+svg{
+     width: 25%;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     right: 50%;
+     margin: auto;
+     transform:translate(-50%,-50%);
+}
+
+svg#second{
+  animation: lercc 9s;
+}
+@keyframes lercc {
+  0%{ opacity: 0.0;}
+  45%{opacity: 0.0;}
+  50%{opacity: 0.05;}
+  55%{opacity: 0.25;}
+55%{opacity: 0.75;}
+  75%{opacity: 0.85;}
+  85%{opacity: 0.95;}
+  100%{opacity: 1;}
+}
