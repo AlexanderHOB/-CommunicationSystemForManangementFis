@@ -140,6 +140,7 @@
                                         <input type="text" v-model="descripcion" class="form-control" placeholder="Ingrese Descripción">
                                     </div>
                                 </div>
+                                <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" ></vue-dropzone>
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="email-input">Pdf</label>
                                     <div class="col-md-9">
@@ -170,7 +171,12 @@
 </template>
 
 <script>
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
     export default {
+    components: {
+        vueDropzone: vue2Dropzone
+      },
         data(){
             return{
                 documento_id:0,
@@ -199,6 +205,13 @@
                 buscar:'',
                 arrayTipo:[],
                 arrayProceso:[],
+                dropzoneOptions: {
+                    url: '/documento/registrar',
+                    headers: {
+                        "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
+                    },
+               addRemoveLinks:true
+          }
             }
         },
         computed:{
