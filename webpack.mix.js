@@ -27,4 +27,5 @@ mix.styles([
     'resources/assets/plantilla/js/sweetalert2.all.min.js',
     'resources/assets/plantilla/js/jquery.drawsvg.js'
 ], 'public/js/plantilla.js')
-.js(['resources/assets/js/app.js'],'public/js/app.js');
+.js(['resources/assets/js/app.js'],'public/js/app.js')
+.sass('resources/assets/sass/app.scss', 'public/css/estyle.css');;
