@@ -40,15 +40,26 @@ class DocumentoController extends Controller
     public function store(Request $request)
     {
         if(!$request->ajax()) return redirect('/');
+    //     if($request->file('file'))
+    //    {
+    //       $image = $request->file('file');
+    //       $name = time().$image->getClientOriginalName();
+    //       $image->move(public_path().'/images/', $name); 
+    //     }
+        $image=$request->pic;
+        $name = time().$image->getClientOriginalName();
+        $image->move(public_path().'/images/', $name);
 
         $documento = new Documento();
         $documento->idtipodocumento=$request->idtipodocumento;
         $documento->nombre=$request->nombre;
         $documento->descripcion=$request->descripcion;
-        $documento->ubicacion=$request->ubicacion;
-        $documento->idproceso='1';
+        $documento->ubicacion=$name;
+        $documento->idproceso=$request->idproceso;
         $documento->condicion='1';
         $documento->save();
+   
+    return response(['fileextension'=>$image]);
 
     }
 

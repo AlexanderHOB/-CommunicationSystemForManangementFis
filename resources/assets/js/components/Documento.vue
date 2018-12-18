@@ -1,3 +1,11 @@
+<style scoped>
+    .largo{
+        overflow-y:scroll;
+    }
+    .horizontal{
+        overflow-x:scroll;
+    }
+</style>
 <template>
             <main class="main">
             <!-- Breadcrumb -->
@@ -57,6 +65,9 @@
                                                 <i class="icon-check"></i>
                                                 </button>
                                             </template>
+                                            <button type="button" @click="abrirModal('documento','observar',documento)" class="btn btn-info btn-sm" >
+                                            <i class="far fa-eye"></i>
+                                            </button> &nbsp;
                                         </td>
                                         <td v-text="documento.nombre"></td>
                                         <td v-text="documento.descripcion"></td>
@@ -96,7 +107,7 @@
                 <!-- Fin ejemplo de tabla Listado -->
             </div>
             <!--Inicio del modal agregar/actualizar-->
-            <div class="modal fade"  tabindex="-1" :class="{'mostrar':modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal fade largo    "  tabindex="-1" :class="{'mostrar':modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-primary modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -140,11 +151,11 @@
                                         <input type="text" v-model="descripcion" class="form-control" placeholder="Ingrese Descripción">
                                     </div>
                                 </div>
-                                <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" ></vue-dropzone>
+                                <!-- <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" ></vue-dropzone> -->
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="email-input">Pdf</label>
                                     <div class="col-md-9">
-                                        <input type="file"  class="form-control" placeholder="Ingrese Ubicaion">
+                                        <input type="file"  class="form-control" @change="fieldChange" >
                                     </div>
                                 </div>
                                 <div v-show="errorDocumento" class="form-group row div-error">
@@ -171,12 +182,12 @@
 </template>
 
 <script>
-import vue2Dropzone from 'vue2-dropzone'
-import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+// import vue2Dropzone from 'vue2-dropzone'
+// import 'vue2-dropzone/dist/vue2Dropzone.min.css'
     export default {
-    components: {
-        vueDropzone: vue2Dropzone
-      },
+    // components: {
+    //     vueDropzone: vue2Dropzone
+    //   },
         data(){
             return{
                 documento_id:0,
@@ -205,13 +216,17 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css'
                 buscar:'',
                 arrayTipo:[],
                 arrayProceso:[],
+                file:0,
                 dropzoneOptions: {
                     url: '/documento/registrar',
                     headers: {
                         "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
                     },
-               addRemoveLinks:true
-          }
+               addRemoveLinks:true,
+                },
+               attachment:null,
+               form:new FormData
+          
             }
         },
         computed:{
@@ -244,7 +259,11 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css'
             }
         },
         methods:{
-            
+            fieldChange(e){
+                console.log(e);
+                let selectedFile=e.target.files[0];
+                this.attachment=selectedFile;
+            },
             listarDocumento(page,buscar,criterio){
                 let me=this;
                 var url='/documento?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
@@ -293,17 +312,18 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css'
                 me.listarDocumento(page,buscar,criterio);
             },
             registrarDocumento(){
-                if(this.validarDocumento()){
-                    return;
-                }
+                // if(this.validarDocumento()){
+                //     return;
+                // }
                 let me=this;
-                axios.post('/documento/registrar',{
-                    'nombre': this.nombre,
-                    'idtipodocumento':this.idtipo,
-                    'descripcion':this.descripcion,
-                    'ubicacion':this.ubicacion,
-                    'idproceso':this.idproceso,
-                }).then(function (response) {
+                this.form.append('pic',this.attachment);
+                this.form.set('nombre', this.nombre);
+                this.form.set('idtipodocumento',this.idtipo);
+                this.form.set('descripcion',this.descripcion);
+                this.form.set('idproceso',this.idproceso,);
+                const config={header:{'Content-Type':'multipart/form-data'}};
+
+                axios.post('/documento/registrar',this.form,config).then(function (response) {
                     me.cerrarModal();
                     me.listarDocumento(1,'','nombre');
                 })
