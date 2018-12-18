@@ -216,7 +216,7 @@ table {
 caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  color: #536c79;
+  color: #FFE937;
   text-align: left;
   caption-side: bottom; }
 
@@ -415,7 +415,7 @@ mark,
 .blockquote-footer {
   display: block;
   font-size: 80%;
-  color: #536c79; }
+  color: #FFE937; }
   .blockquote-footer::before {
     content: "\2014 \00A0"; }
 
@@ -7759,7 +7759,7 @@ base-chart.chart {
       flex-direction: column;
   padding: 0;
   color: #fff;
-  background: #29363d; }
+  background: rgb(216, 174, 5); }
   .sidebar .sidebar-close {
     position: absolute;
     right: 0;

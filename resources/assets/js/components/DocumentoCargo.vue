@@ -30,10 +30,8 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card ">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Documento
-                        <button type="button" @click="abrirModal('documento','registrar')" class="btn btn-secondary" >
-                            <i class="icon-plus"></i>&nbsp;Nuevo
-                        </button>
+                        <i class="fa fa-align-justify"></i> Documento a cargo
+                        
                     </div>
                     <div class="card-body table-responsive-lg">
                         <div class="form-group row">
@@ -57,28 +55,18 @@
                                         <th>Descripción</th>
                                         <th>Proceso</th>
                                         <th>Tipo de Documento</th>
-                                        <!-- <th>Ubicacion</th> -->
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="documento in arrayDocumento" :key="documento.id">
                                         <td>
-                                            <button type="button" @click="abrirModal('documento','actualizar',documento)" class="btn btn-warning btn-sm" >
-                                            <i class="icon-pencil"></i>
-                                            </button> 
-                                            <template v-if="documento.condicion">
-                                                <button type="button" class="btn btn-danger btn-sm" @click="desactivarDocumento(documento.id)">
-                                                <i class="icon-trash"></i>
-                                                </button>
-                                            </template>
-                                            <template v-else>
-                                                <button type="button" class="btn btn-info btn-sm" @click="activarDocumento(documento.id)">
-                                                <i class="icon-check"></i>
-                                                </button>
-                                            </template>                                           
+                                                                                       
                                             <button type="button" class="btn btn-info btn-sm" @click="abrirModal('documento','observar',documento)">
                                             <i class="far fa-eye"></i>                                       
+                                            </button> 
+                                            <button type="button" class="btn btn-danger btn-sm" @click="abrirModal('documento','observar',documento)">
+                                            <i class="fas fa-share-square"></i>                                   
                                             </button> 
                                         </td>
                                         <td v-text="documento.nombre"></td>
@@ -119,76 +107,6 @@
                 <!-- Fin ejemplo de tabla Listado -->
             </div>
             <!--Inicio del modal agregar/actualizar-->
-            <div class="modal fade largo    "  tabindex="-1" :class="{'mostrar':modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-                <div class="modal-dialog modal-primary modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" v-text="tituloModal"></h4>
-                            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
-                                    <div class="col-md-9">
-                                        <input type="text" v-model="nombre"  class="form-control" placeholder="Ingrese Documento">
-                                        <span class="help-block">(*) Ingrese el nombre del Documento</span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Tipo De Documento</label>
-                                    <div class="col-md-9">
-                                        <select class="form-control" v-model="idtipo">
-                                            <option value="0" disabled>Seleccione</option>
-                                            <option v-for="tipo in arrayTipo" :key="tipo.id" :value="tipo.id" v-text="tipo.nombre"></option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="text-input">Proceso</label>
-                                    <div class="col-md-9">
-                                        <select class="form-control" v-model="idproceso">
-                                            <option value="0" disabled>Seleccione</option>
-                                            <option v-for="proceso in arrayProceso" :key="proceso.id" :value="proceso.id" v-text="proceso.nombre"></option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
-                                    <div class="col-md-9">
-                                        <input type="text" v-model="descripcion" class="form-control" placeholder="Ingrese Descripción">
-                                    </div>
-                                </div>
-                                <!-- <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" ></vue-dropzone> -->
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="email-input">Pdf</label>
-                                    <div class="col-md-9">
-                                        <input type="file"  class="form-control" @change="fieldChange" >
-                                    </div>
-                                </div>
-                                <div v-show="errorDocumento" class="form-group row div-error">
-                                    <div class="text-center text-error">
-                                        <div v-for="error in errorMostrarMsjDocumento" :key="error" v-text="error">
-
-                                        </div>
-                                    </div>  
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
-                            <button type="button" class="btn btn-primary" v-if="tipoAccion==1" @click="registrarDocumento()">Guardar</button>
-                            <button type="button" class="btn btn-primary" v-if="tipoAccion==2" @click="actualizarDocumento()">Actualizar</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
             <!--Fin del modal-->
             <!-- Modal Documento-->
             <div class="modal fade modal-padre"  tabindex="-1" :class="{'mostrar':modal1}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
@@ -298,7 +216,7 @@
             },
             listarDocumento(page,buscar,criterio){
                 let me=this;
-                var url='/documento?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
+                var url='/documentoCargo?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
                 axios.get(url).then(function (response) {
                     var respuesta=response.data;
                     me.arrayDocumento=respuesta.documentos.data;

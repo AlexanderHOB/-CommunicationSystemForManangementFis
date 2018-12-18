@@ -21,8 +21,10 @@ Vue.component('codigo', require('./components/Codigo.vue'));
 Vue.component('tipo', require('./components/Tipo.vue'));
 Vue.component('rol', require('./components/Rol.vue'));
 Vue.component('documento', require('./components/Documento.vue'));
+Vue.component('documentocargo', require('./components/DocumentoCargo.vue'));
 Vue.component('user', require('./components/Usuario.vue'));
 Vue.component('proceso', require('./components/Proceso.vue'));
+Vue.component('procesocargo', require('./components/ProcesoCargo.vue'));
 const app = new Vue({
     el: '#app',
     data:{

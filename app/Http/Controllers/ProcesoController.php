@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Proceso;
+use Auth;
 class ProcesoController extends Controller
 {
     public function index(Request $request)
     {
-       // if(!$request->ajax()) return redirect('/');
+       if(!$request->ajax()) return redirect('/');
         $buscar = $request->buscar;
         $criterio = $request->criterio;
         
@@ -20,7 +21,38 @@ class ProcesoController extends Controller
         else{
             $procesos = Proceso::join('users','procesos.iduser','=','users.id')
             ->select('procesos.nombre','procesos.periodo','users.id as userid','procesos.id', 'user.nombre as nombre_user','procesos.condicion')
-            ->where('procesos.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')
+            ->where('procesos.'.$criterio, 'like', '%'. $buscar . '%')
+            ->orderBy('proceso.id', 'desc')->paginate(10);
+        }
+        return[
+            'pagination' =>[
+                'total'         => $procesos->total(),
+                'current_page'  => $procesos->currentPage(),
+                'per_page'      => $procesos->perPage(),
+                'last_page'     => $procesos->lastPage(),
+                'from'          =>$procesos->firstItem(),
+                'to'            =>$procesos->lastItem(),
+            ],
+            'procesos'=>$procesos
+        ];
+    }
+    public function procesoCargo(Request $request)
+    {
+       if(!$request->ajax()) return redirect('/');
+        $buscar = $request->buscar;
+        $criterio = $request->criterio;
+        
+        if ($buscar==''){
+            $procesos = Proceso::join('users','procesos.iduser','=','users.id')
+            ->select('procesos.nombre','procesos.periodo','procesos.id','users.id as userid','users.usuario','procesos.condicion')
+            ->where('users.id','=',Auth::id())
+            ->orderBy('procesos.id', 'desc')->paginate(10);
+        }
+        else{
+            $procesos = Proceso::join('users','procesos.iduser','=','users.id')
+            ->select('procesos.nombre','procesos.periodo','users.id as userid','procesos.id', 'user.nombre as nombre_user','procesos.condicion')
+            ->where('procesos.'.$criterio, 'like', '%'. $buscar . '%')
+            ->where('users.id','=',Auth::id())
             ->orderBy('proceso.id', 'desc')->paginate(10);
         }
         return[

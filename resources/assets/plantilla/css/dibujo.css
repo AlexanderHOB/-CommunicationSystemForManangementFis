@@ -1,5 +1,14 @@
 body {
-     background: #262623;
+     background: #353535;
+}
+.nav-link{
+
+  text-shadow: 3px 2px 3px rgba(255,255,255,.2);
+}
+.nav-link:hover{
+  background: #F7E802 !important;
+  color:#000 !important;
+  font-weight: bold;
 }
 
 svg{
