@@ -9303,3 +9303,10 @@ svg#second{
   85%{opacity: 0.95;}
   100%{opacity: 1;}
 }
+.logeo{
+  background: #FFCD00;
+}
+.log2{
+  background-color: #0D1917 !important;
+  border-color: #0D1917 !important;
+}

@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card-group mb-0">
-        <div class="card p-4">
+        <div class="logeo card p-4" >
         <form class="form-horizontal was-validated" method="post" action="{{route('login')}}">
             {{csrf_field()}}
           <div class="card-body">
@@ -28,8 +28,8 @@
           </div>
         </form>
         </div>
-        <div class="card text-white bg-primary py-1 d-md-down-none row" style="width:44%">
-            <div class="card-body text-center">
+        <div class="card text-white bg-primary py-1 d-md-down-none row log2" style="width:44%">
+            <div class="card-body text-center log2">
                 <h4>Facultad de Ingeniería de Sistemas</h4>             
             </div>
               <div class="">
