@@ -8,7 +8,7 @@ class Share extends Model
 {
 
     protected $table = 'shares';
-    protected $fillable=['id','iduser','iddocumento'];
+    protected $fillable=['id','iduser','iddocumento','condicion'];
     public function user(){
         return $this->belongsTo('App\User');
     }

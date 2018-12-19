@@ -328,48 +328,7 @@
                 //Envia la petición para visualizar la data de esa página
                 me.listarDocumento(page,buscar,criterio);
             },
-            registrarDocumento(){
-                if(this.validarDocumento()){
-                    return;
-                }
-                let me=this;
-                this.form.append('pic',this.attachment);
-                this.form.set('nombre', this.nombre);
-                this.form.set('idtipodocumento',this.idtipo);
-                this.form.set('descripcion',this.descripcion);
-                this.form.set('idproceso',this.idproceso,);
-                const config={header:{'Content-Type':'multipart/form-data'}};
-
-                axios.post('/documento/registrar',this.form,config).then(function (response) {
-                    me.cerrarModal();
-                    me.listarDocumento(1,'','nombre');
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                });
-            },
-            actualizarDocumento(){
-                if(this.validarDocumento()){
-                    return;
-                }
-                let me=this;
-                axios.put('/documento/actualizar',{
-                    'nombre': this.nombre,
-                    'idtipodocumento':this.idtipo,
-                    'descripcion':this.descripcion,
-                    'ubicacion':this.ubicacion,
-                    'idproceso':this.idproceso,
-                    'id':this.documento_id
-                }).then(function (response) {
-                    me.cerrarModal();
-                    me.listarDocumento(1,'','nombre');
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                });
-            },
+            
             deleteDocumento(id){
                 const swalWithBootstrapButtons = Swal.mixin({
                 confirmButtonClass: 'btn btn-success',
@@ -378,8 +337,8 @@
                 })
 
                 swalWithBootstrapButtons({
-                title: '¿Desea eliminar este registro?',
-                text: "El registro se eliminará",
+                title: '¿Desea eliminar este documento?',
+                text: "El documento no se podra recuperar",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Sí, eliminar Documento!',
@@ -388,7 +347,7 @@
                 }).then((result) => {
                 if (result.value) {
                     let me=this;
-                    axios.delete('/share/delete',{
+                    axios.put('/share/delete',{
                     'id':id
                     }).then(function (response) {
                      me.listarDocumento(1,'','nombre');
@@ -409,12 +368,13 @@
                 ) {
                     swalWithBootstrapButtons(
                     'Cancelado',
-                    'El registro esta a salvo :)',
+                    'El documento esta a salvo :)',
                     'error'
                     )
                 }
                 })
             },
+            
             abrirModal(modelo, accion, data=[]){
                 switch(modelo){
                     case "documento":

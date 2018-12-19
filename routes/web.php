@@ -85,10 +85,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/user/selectUser','UserController@selectUser');
 
     Route::get('/share','ShareController@index');
-    Route::post('/share/registrar','ShareController@store');
-    Route::put('/share/actualizar','ShareController@update');
-    Route::delete('/share/delete','ShareController@delete');
-    Route::get('/share/selectUser','ShareController@selectUser');
+    Route::post('/share/registrar','ShareController@store');  
+    Route::put('/share/delete','ShareController@delete');
     });
     
     

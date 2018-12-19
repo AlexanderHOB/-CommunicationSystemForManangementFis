@@ -20,9 +20,9 @@ class ProcesoController extends Controller
         }
         else{
             $procesos = Proceso::join('users','procesos.iduser','=','users.id')
-            ->select('procesos.nombre','procesos.periodo','users.id as userid','procesos.id', 'user.nombre as nombre_user','procesos.condicion')
+            ->select('procesos.nombre','procesos.periodo','procesos.id','users.id as userid','users.usuario','procesos.condicion')
             ->where('procesos.'.$criterio, 'like', '%'. $buscar . '%')
-            ->orderBy('proceso.id', 'desc')->paginate(10);
+            ->orderBy('procesos.id', 'desc')->paginate(10);
         }
         return[
             'pagination' =>[

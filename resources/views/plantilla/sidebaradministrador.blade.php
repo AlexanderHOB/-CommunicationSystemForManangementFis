@@ -54,9 +54,9 @@
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"> <i class="fas fa-share-alt-square"></i> Doc Compartidos </a>
                     <ul class="nav-dropdown-items">
-                        <li @click="menu=7" class="nav-item">
+                        {{-- <li @click="menu=7" class="nav-item">
                             <a class="nav-link" href="main.html"><i class="fas fa-file-invoice"></i> Tipo de Documentos </a>
-                        </li>
+                        </li> --}}
                         <li  @click="menu=8" class="nav-item">
                             <a class="nav-link" href="main.html"><i class="fas fa-file-pdf"></i> Documentos </a>
                         </li>

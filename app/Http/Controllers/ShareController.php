@@ -19,8 +19,9 @@ class ShareController extends Controller
             ->join('procesos','documentos.idproceso','=','procesos.id')
             ->join('tipoDeDocumentos','documentos.idtipodocumento','=','tipoDeDocumentos.id')
             ->select('documentos.id as id_documento','documentos.nombre','documentos.descripcion','documentos.ubicacion','documentos.condicion','tipoDeDocumentos.nombre as nombre_tipo','procesos.nombre as nombre_proceso'
-            ,'users.usuario','users.id as id_user')
+            ,'users.usuario','users.id as id_user','shares.id')
             ->where('shares.iduser','=',Auth::id())
+            ->where('shares.condicion','=','1')
             ->orderBy('documentos.id', 'desc')->paginate(10);
         }
         else{
@@ -31,6 +32,8 @@ class ShareController extends Controller
             ->select('documentos.id as id_documento','documentos.nombre','documentos.descripcion','documentos.condicion','tipoDeDocumentos.nombre as nombre_tipo','procesos.nombre as nombre_proceso'
             ,'users.usuario','users.id as id_user')
             ->where('documentos.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')
+            ->where('shares.iduser','=',Auth::id())
+            ->where('shares.condicion','=','1')
             ->orderBy('documentos.id', 'desc')->paginate(10);
         }
         return[
@@ -60,6 +63,7 @@ class ShareController extends Controller
     public function delete(Request $request){
         if(!$request->ajax()) return redirect('/');
         $share=Share::findOrFail($request->id);
-        $share->delete();
+        $share->condicion='0';
+        $share->save();
     }
 }
