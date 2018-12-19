@@ -65,7 +65,7 @@
                                             <button type="button" class="btn btn-info btn-sm" @click="abrirModal('documento','observar',documento)">
                                             <i class="far fa-eye"></i>                                       
                                             </button> 
-                                            <button type="button" class="btn btn-danger btn-sm" @click="abrirModal('documento','observar',documento)">
+                                            <button type="button" class="btn btn-danger btn-sm" @click="abrirModal('documento','compartir',documento)">
                                             <i class="fas fa-share-square"></i>                                   
                                             </button> 
                                         </td>
@@ -111,13 +111,13 @@
             <!-- Modal Documento-->
             <div class="modal fade modal-padre"  tabindex="-1" :class="{'mostrar':modal1}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-primary modal-lg" role="document">
-                    <div class="modal-content1">
+                    <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
                               <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body1">
+                        <div class="modal-body">
                             <embed v-bind:src="'images/'+pdfruta + '#toolbar=0'" type="application/pdf" class="pdf"></embed>
                         </div>
                        
@@ -127,6 +127,80 @@
                 <!-- /.modal-dialog -->
             </div>
             <!--Fin de Modal-->
+            <!--Inicio del modal compartir-->
+            <div class="modal fade largo    "  tabindex="-1" :class="{'mostrar':modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-primary modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" v-text="tituloModal"></h4>
+                            <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
+                                    <div class="col-md-9">
+                                        <p  v-text="nombre"  class="form-control"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Tipo De Documento</label>
+                                    <div class="col-md-9">
+                                        
+                                        <select class="form-control" v-model="idtipo" disabled> 
+                                            <option value="0" disabled>Seleccione</option>
+                                            <option v-for="tipo in arrayTipo" :key="tipo.id" :value="tipo.id" v-text="tipo.nombre"></option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Proceso</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="idproceso" disabled>
+                                            <option value="0" disabled>Seleccione</option>
+                                            <option v-for="proceso in arrayProceso" :key="proceso.id" :value="proceso.id" v-text="proceso.nombre"></option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
+                                    <div class="col-md-9">
+                                        <p  v-text="descripcion"  class="form-control"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="text-input">Compartir con: </label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" v-model="iduser">
+                                            <option value="0" disabled>Seleccione</option>
+                                            <option v-for="user in arrayUser" :key="user.id" :value="user.id" v-text="user.usuario"></option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div v-show="errorDocumento" class="form-group row div-error">
+                                    <div class="text-center text-error">
+                                        <div v-for="error in errorMostrarMsjDocumento" :key="error" v-text="error">
+
+                                        </div>
+                                    </div>  
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
+                            <button type="button" class="btn btn-primary" v-if="tipoAccion==1" @click="registrarDocumento()">Compartir</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!--Fin del modal-->
         </main>
 </template>
 
@@ -148,7 +222,7 @@
                 pdfruta:'',
                 arrayDocumento:[],
                 modal:0,
-                modal1:0,
+                modal1:0,               
                 tituloModal:'',
                 tipoAccion:0,
                 errorDocumento:0,
@@ -166,15 +240,8 @@
                 buscar:'',
                 arrayTipo:[],
                 arrayProceso:[],
-                file:0,
-                dropzoneOptions: {
-                    url: '/documento/registrar',
-                    headers: {
-                        "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
-                    },
-               addRemoveLinks:true,
-                },
-               attachment:null,
+                arrayUser:[],
+                iduser:0,
                form:new FormData
           
             }
@@ -209,11 +276,6 @@
             }
         },
         methods:{
-            fieldChange(e){
-                console.log(e);
-                let selectedFile=e.target.files[0];
-                this.attachment=selectedFile;
-            },
             listarDocumento(page,buscar,criterio){
                 let me=this;
                 var url='/documentoCargo?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
@@ -227,6 +289,19 @@
                     console.log(error);
                 });
                 
+            },
+            selectUser(){
+                let me=this;
+                var url='/user/selectUser';
+                axios.get(url).then(function (response) {
+                    //console.log(response);
+                     var respuesta=response.data;
+                    me.arrayUser=respuesta.users;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
             },
             selectTipo(){
                 let me=this;
@@ -262,18 +337,11 @@
                 me.listarDocumento(page,buscar,criterio);
             },
             registrarDocumento(){
-                if(this.validarDocumento()){
-                    return;
-                }
-                let me=this;
-                this.form.append('pic',this.attachment);
-                this.form.set('nombre', this.nombre);
-                this.form.set('idtipodocumento',this.idtipo);
-                this.form.set('descripcion',this.descripcion);
-                this.form.set('idproceso',this.idproceso,);
-                const config={header:{'Content-Type':'multipart/form-data'}};
-
-                axios.post('/documento/registrar',this.form,config).then(function (response) {
+            
+                let me=this;           
+                this.form.set('iduser', this.iduser);
+                this.form.set('iddocumento',this.documento_id);
+                axios.post('/share/registrar',this.form).then(function (response) {
                     me.cerrarModal();
                     me.listarDocumento(1,'','nombre');
                 })
@@ -281,29 +349,8 @@
                     // handle error
                     console.log(error);
                 });
-            },
-            actualizarDocumento(){
-                if(this.validarDocumento()){
-                    return;
-                }
-                let me=this;
-                axios.put('/documento/actualizar',{
-                    'nombre': this.nombre,
-                    'idtipodocumento':this.idtipo,
-                    'descripcion':this.descripcion,
-                    'ubicacion':this.ubicacion,
-                    'idproceso':this.idproceso,
-                    'id':this.documento_id
-                }).then(function (response) {
-                    me.cerrarModal();
-                    me.listarDocumento(1,'','nombre');
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                });
-            },
-            desactivarDocumento(id){
+            },           
+            deleteDocumento(id){
                 const swalWithBootstrapButtons = Swal.mixin({
                 confirmButtonClass: 'btn btn-success',
                 cancelButtonClass: 'btn btn-danger',
@@ -311,7 +358,7 @@
                 })
 
                 swalWithBootstrapButtons({
-                title: '¿Desea desactivar este registro?',
+                title: '¿Desea elim este registro?',
                 text: "El registro no se mostrara al momento de añadir documento",
                 type: 'warning',
                 showCancelButton: true,
@@ -321,7 +368,7 @@
                 }).then((result) => {
                 if (result.value) {
                     let me=this;
-                    axios.put('/documento/desactivar',{
+                    axios.put('/share/desactivar',{
                     'id':id
                     }).then(function (response) {
                      me.listarDocumento(1,'','nombre');
@@ -348,83 +395,18 @@
                 }
                 })
             },
-            activarDocumento(id){
-                const swalWithBootstrapButtons = Swal.mixin({
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-                })
-
-                swalWithBootstrapButtons({
-                title: '¿Desea activar este registro?',
-                text: "El registro  se mostrara al momento de añadir documento",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Sí, Activar documento!',
-                cancelButtonText: 'No, cancelar!',
-                reverseButtons: true
-                }).then((result) => {
-                if (result.value) {
-                    let me=this;
-                    axios.put('/documento/activar',{
-                    'id':id
-                    }).then(function (response) {
-                     me.listarDocumento(1,'','nombre');
-                    swalWithBootstrapButtons(
-                    'Activado!',
-                    'Tu registro fue activado.',
-                    'success'
-                    )
-                     })
-                    .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                    });
-                    
-                } else if (
-                    // Read more about handling dismissals
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons(
-                    'Cancelado',
-                    'El registro no se activo :)',
-                    'error'
-                    )
-                }
-                })
-            },
-            validarDocumento(){
-                this.errorDocumento=0;
-                this.errorMostrarMsjDocumento=[];
-                if(!this.nombre) this.errorMostrarMsjDocumento.push("El nombre del Documento no puede estar vacio");
-                if(this.idtipo==0) this.errorMostrarMsjDocumento.push("El tipo del Documento no puede estar vacio");
-                if(this.idproceso==0) this.errorMostrarMsjDocumento.push("El proceso del Documento no puede estar vacio");
-                
-                if(this.errorMostrarMsjDocumento.length) this.errorDocumento=1;
-
-                return this.errorDocumento;
-            },
+                   
             abrirModal(modelo, accion, data=[]){
                 switch(modelo){
                     case "documento":
                     {
                         switch(accion){
-                            case 'registrar':
+                            
+                            case 'compartir':
                             {
-                                this.tituloModal="Registrar Documento";
+                                this.tituloModal="Compartir Documento";
                                 this.modal=1;
-                                this.nombre='';
-                                this.tipo=''
-                                this.descripcion='';
-                                this.ubicacion='';
                                 this.tipoAccion=1;
-                                break;
-                            }
-                            case 'actualizar':
-                            {
-                                this.tituloModal="Actualizar Documento";
-                                this.modal=1;
-                                this.tipoAccion=2;
                                 this.documento_id=data['id'];
                                 this.nombre=data['nombre'];
                                 this.idtipo=data['idtipodocumento'];
@@ -444,6 +426,7 @@
                     }
                     this.selectTipo();
                     this.selectProceso();
+                    this.selectUser();
                 }
             },
             cerrarModal(){

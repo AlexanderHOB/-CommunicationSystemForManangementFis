@@ -36,5 +36,8 @@ class User extends Authenticatable
     public function procesos(){
         return $this->hasMany('App\Proceso');
     }
+    public function shares(){
+        return $this->hasMany('App\Share');
+    }
     
 }

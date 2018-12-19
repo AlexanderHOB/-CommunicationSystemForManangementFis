@@ -29,6 +29,10 @@ Route::group(['middleware'=>['auth']],function(){
         Route::post('/documento/registrar','DocumentoController@store');
         Route::put('/documento/actualizar','DocumentoController@update');
         Route::put('/documento/observar','DocumentoController@observar')->name('documento.pdf');
+
+        Route::get('/documentoCargo','DocumentoController@documentoCargo');
+
+        Route::get('/procesoCargo','ProcesoController@procesoCargo');
     });
     Route::group(['middleware'=>['Administrador']],function(){
 
@@ -79,6 +83,12 @@ Route::group(['middleware'=>['auth']],function(){
     Route::put('/user/activar','UserController@activar');
     Route::put('/user/desactivar','UserController@desactivar');
     Route::get('/user/selectUser','UserController@selectUser');
+
+    Route::get('/share','ShareController@index');
+    Route::post('/share/registrar','ShareController@store');
+    Route::put('/share/actualizar','ShareController@update');
+    Route::delete('/share/delete','ShareController@delete');
+    Route::get('/share/selectUser','ShareController@selectUser');
     });
     
     

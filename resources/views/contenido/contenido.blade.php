@@ -35,7 +35,7 @@
                     </template>
                 
                     <template v-if="menu==8">
-                        <documentocargo></documentocargo>
+                        <share></share>
                     </template>
                 
                     <template v-if="menu==9">
@@ -65,7 +65,7 @@
                     <documentocargo></documentocargo>
                     </template>
                     <template v-if="menu==8">
-                        <documento></documento>
+                        <share></share>
                     </template>
                 
                     <template v-if="menu==9">

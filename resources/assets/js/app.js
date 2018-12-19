@@ -25,6 +25,7 @@ Vue.component('documentocargo', require('./components/DocumentoCargo.vue'));
 Vue.component('user', require('./components/Usuario.vue'));
 Vue.component('proceso', require('./components/Proceso.vue'));
 Vue.component('procesocargo', require('./components/ProcesoCargo.vue'));
+Vue.component('share', require('./components/Share.vue'));
 const app = new Vue({
     el: '#app',
     data:{

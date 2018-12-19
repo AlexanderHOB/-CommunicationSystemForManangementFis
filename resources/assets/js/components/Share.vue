@@ -30,10 +30,7 @@
                 <!-- Ejemplo de tabla Listado -->
                 <div class="card ">
                     <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Documento
-                        <button type="button" @click="abrirModal('documento','registrar')" class="btn btn-secondary" >
-                            <i class="icon-plus"></i>&nbsp;Nuevo
-                        </button>
+                        <i class="fa fa-align-justify"></i> Compartidos
                     </div>
                     <div class="card-body table-responsive-lg">
                         <div class="form-group row">
@@ -57,35 +54,23 @@
                                         <th>Descripción</th>
                                         <th>Proceso</th>
                                         <th>Tipo de Documento</th>
-                                        <!-- <th>Ubicacion</th> -->
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="documento in arrayDocumento" :key="documento.id">
                                         <td>
-                                            <button type="button" @click="abrirModal('documento','actualizar',documento)" class="btn btn-warning btn-sm" >
-                                            <i class="icon-pencil"></i>
-                                            </button> 
-                                            <template v-if="documento.condicion">
-                                                <button type="button" class="btn btn-danger btn-sm" @click="desactivarDocumento(documento.id)">
-                                                <i class="icon-trash"></i>
-                                                </button>
-                                            </template>
-                                            <template v-else>
-                                                <button type="button" class="btn btn-info btn-sm" @click="activarDocumento(documento.id)">
-                                                <i class="icon-check"></i>
-                                                </button>
-                                            </template>                                           
-                                            <button type="button" class="btn btn-info btn-sm" @click="abrirModal('documento','observar',documento)">
+                                           <button type="button" class="btn btn-info btn-sm" @click="abrirModal('documento','observar',documento)">
                                             <i class="far fa-eye"></i>                                       
+                                            </button>                                           
+                                            <button type="button" class="btn btn-danger btn-sm" @click="deleteDocumento(documento.id)">
+                                            <i class="fas fa-ban"></i>                                    
                                             </button> 
                                         </td>
                                         <td v-text="documento.nombre"></td>
                                         <td v-text="documento.descripcion"></td>
                                         <td v-text="documento.nombre_proceso"></td>
                                         <td v-text="documento.nombre_tipo"></td>
-                                        <!-- <td v-text="documento.ubicacion"></td> -->
                                         <td>
                                             <div v-if="documento.condicion">
                                                 <span class="badge badge-success">Activo</span>
@@ -191,13 +176,12 @@
             </div>
             <!--Fin del modal-->
             <!-- Modal Documento-->
-            <div class="modal fade "  tabindex="-1" :class="{'mostrar':modal1}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal fade modal-padre"  tabindex="-1" :class="{'mostrar':modal1}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-primary modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" v-text="tituloModal"></h4>
                             <button type="button" class="close" @click="cerrarModal()" aria-label="Close">
-                              <span aria-hidden="true">X</span>
+                              <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -299,7 +283,7 @@
             },
             listarDocumento(page,buscar,criterio){
                 let me=this;
-                var url='/documento?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
+                var url='/share?page=' + page + '&buscar='+ buscar + '&criterio='+ criterio;
                 axios.get(url).then(function (response) {
                     var respuesta=response.data;
                     me.arrayDocumento=respuesta.documentos.data;
@@ -386,7 +370,7 @@
                     console.log(error);
                 });
             },
-            desactivarDocumento(id){
+            deleteDocumento(id){
                 const swalWithBootstrapButtons = Swal.mixin({
                 confirmButtonClass: 'btn btn-success',
                 cancelButtonClass: 'btn btn-danger',
@@ -394,23 +378,23 @@
                 })
 
                 swalWithBootstrapButtons({
-                title: '¿Desea desactivar este registro?',
-                text: "El registro no se mostrara al momento de añadir documento",
+                title: '¿Desea eliminar este registro?',
+                text: "El registro se eliminará",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Sí, desactivar Documento!',
+                confirmButtonText: 'Sí, eliminar Documento!',
                 cancelButtonText: 'No, cancelar!',
                 reverseButtons: true
                 }).then((result) => {
                 if (result.value) {
                     let me=this;
-                    axios.put('/documento/desactivar',{
+                    axios.delete('/share/delete',{
                     'id':id
                     }).then(function (response) {
                      me.listarDocumento(1,'','nombre');
                     swalWithBootstrapButtons(
-                    'Desactivado!',
-                    'Tu registro fue desactivado.',
+                    'Eliminado!',
+                    'Tu registro fue eliminado.',
                     'success'
                     )
                      })
@@ -430,62 +414,6 @@
                     )
                 }
                 })
-            },
-            activarDocumento(id){
-                const swalWithBootstrapButtons = Swal.mixin({
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-                })
-
-                swalWithBootstrapButtons({
-                title: '¿Desea activar este registro?',
-                text: "El registro  se mostrara al momento de añadir documento",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Sí, Activar documento!',
-                cancelButtonText: 'No, cancelar!',
-                reverseButtons: true
-                }).then((result) => {
-                if (result.value) {
-                    let me=this;
-                    axios.put('/documento/activar',{
-                    'id':id
-                    }).then(function (response) {
-                     me.listarDocumento(1,'','nombre');
-                    swalWithBootstrapButtons(
-                    'Activado!',
-                    'Tu registro fue activado.',
-                    'success'
-                    )
-                     })
-                    .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                    });
-                    
-                } else if (
-                    // Read more about handling dismissals
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons(
-                    'Cancelado',
-                    'El registro no se activo :)',
-                    'error'
-                    )
-                }
-                })
-            },
-            validarDocumento(){
-                this.errorDocumento=0;
-                this.errorMostrarMsjDocumento=[];
-                if(!this.nombre) this.errorMostrarMsjDocumento.push("El nombre del Documento no puede estar vacio");
-                if(this.idtipo==0) this.errorMostrarMsjDocumento.push("El tipo del Documento no puede estar vacio");
-                if(this.idproceso==0) this.errorMostrarMsjDocumento.push("El proceso del Documento no puede estar vacio");
-                
-                if(this.errorMostrarMsjDocumento.length) this.errorDocumento=1;
-
-                return this.errorDocumento;
             },
             abrirModal(modelo, accion, data=[]){
                 switch(modelo){
@@ -518,7 +446,7 @@
                             }
                             case 'observar':
                             {
-                                this.tituloModal=" Documento PDF";
+                                
                                 this.modal1=1;
                                 this.pdfruta=data['ubicacion'];
                                 break;

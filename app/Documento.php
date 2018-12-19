@@ -13,4 +13,7 @@ class Documento extends Model
     public function proceso(){
         return $this->belongsTo('App\Proceso');
     }
+    public function shares(){
+        return $this->hasMany('App\Share');
+    }
 }
