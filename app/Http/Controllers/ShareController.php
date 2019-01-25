@@ -57,7 +57,7 @@ class ShareController extends Controller
         $share = new Share();
         $share->iduser=$request->iduser;
         $share->iddocumento=$request->iddocumento;
-        $share->condcion='1';
+        $share->condicion='1';
         $share->save();
     }
 
