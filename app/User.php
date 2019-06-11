@@ -39,5 +39,7 @@ class User extends Authenticatable
     public function shares(){
         return $this->hasMany('App\Share');
     }
-    
+    public function historiales(){
+        return $this->hasMany('App\Historial');
+    }
 }

@@ -68,7 +68,7 @@
                     <div class="col-md-6">
                         <div class="card card-chart">
                             <div class="card-header">
-                                <h4>Procesos </h4>
+                                <h4>Documentos Actualizados </h4>
                             </div>
                             <div class="card-content">
                                 <div class="ct-chart">
@@ -84,16 +84,16 @@
                     <div class="col-md-6">
                         <div class="card card-chart">
                             <div class="card-header">
-                                <h4>Ventas</h4>
+                                <h4>Ingresos por mes</h4>
                             </div>
                             <div class="card-content">
                                 <div class="ct-chart">
-                                    <canvas id="ventas">                                                
+                                    <canvas id="Logeos">                                                
                                     </canvas>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <p>Ventas de los últimos meses.</p>
+                                <p>Ingreso a la plataforma.</p>
                             </div>
                         </div>
                     </div>
@@ -114,11 +114,12 @@
                 varTotalIngreso:[],
                 varMesIngreso:[], 
                 
-                varVenta:null,
-                charVenta:null,
-                ventas:[],
-                varTotalVenta:[],
-                varMesVenta:[],
+                varLogeo:null,
+                varUser:[],
+                charLogeo:null,
+                logeos:[],
+                varTotalLogeo:[],
+                varMesLogeo:[],
             }
         },
         methods : {
@@ -135,14 +136,14 @@
                     console.log(error);
                 });
             },
-            getVentas(){
+            getLogeo(){
                 let me=this;
                 var url='/dashboard';
                 axios.get(url).then(function (response) {
                     var respuesta= response.data;
-                    me.ventas = respuesta.ventas;
+                    me.logeos = respuesta.logeo;
                     //cargamos los datos del chart
-                    me.loadVentas();
+                    me.loadLogeo();
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -180,25 +181,26 @@
                     }
                 });
             },
-            loadVentas(){
+            loadLogeo(){
                 let me=this;
                 let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]; 
-                me.ventas.map(function(x){
-                    me.varMesVenta.push(meses[x.mes-1]);
-                    me.varTotalVenta.push(x.total);
+                me.logeos.map(function(x){
+                    me.varMesLogeo.push(meses[x.mes-1]);
+                    me.varTotalLogeo.push(x.logeos);
+                    me.varUser.push(x.usuario);
                 });
-                me.varVenta=document.getElementById('ventas').getContext('2d');
+                me.varLogeo=document.getElementById('Logeos').getContext('2d');
 
-                me.charVenta = new Chart(me.varVenta, {
-                    type: 'bar',
+                me.charLogeo = new Chart(me.varLogeo, {
+                    type: 'polarArea',
                     data: {
-                        labels: me.varMesVenta,
+                        labels: me.varUser,
                         datasets: [{
-                            label: 'Ventas',
-                            data: me.varTotalVenta,
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 0.2)',
-                            borderWidth: 1
+
+                            data: me.varTotalLogeo,
+                            backgroundColor: ['#36A2EB','#FF6384','#4BC0C0','#FFCD56','#5e35b1','#76ff03','#ff3d00','#c6ff00'],
+                            borderColor: 'rgba(255,255,255,0.8)',
+                            borderWidth: 3
                         }]
                     },
                     options: {
@@ -215,7 +217,7 @@
         },
         mounted() {
             this.getIngresos();
-            this.getVentas();
+            this.getLogeo();
         }
     }
 </script>

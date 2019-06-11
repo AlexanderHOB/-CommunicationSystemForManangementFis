@@ -18,15 +18,15 @@ class DashboardController extends Controller
         ->groupBy(DB::raw('DAY(d.updated_at)'),DB::raw('MONTH(d.updated_at)'))
         ->get();
 
-        $cargos=DB::table('procesos as p')
-        ->select(DB::raw('MONTH(v.fecha_hora) as mes'),
-        DB::raw('YEAR(v.fecha_hora) as anio'),
-        DB::raw('SUM(v.total) as total'))
-        ->whereYear('v.fecha_hora',$anio)
-        ->groupBy(DB::raw('MONTH(v.fecha_hora)'),DB::raw('YEAR(v.fecha_hora)'))
+        $logeo=DB::table('historial as h')
+        ->join('users','users.id','=','h.usuario_id')
+        ->select(DB::raw('COUNT(h.usuario_id) as logeos, users.usuario'),
+        DB::raw('DAY(h.date_login) as dia'))
+        ->whereYear('h.date_login',$anio)
+        ->groupBy(DB::raw('DAY(h.date_login)'),DB::raw('h.usuario_id'),DB::raw('users.usuario'))
         ->get();
 
-        return ['ingresos'=>$ingresos,'anio'=>$anio];      
+        return ['ingresos'=>$ingresos,'anio'=>$anio,'logeo'=>$logeo];      
 
     }
 }

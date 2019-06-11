@@ -2,10 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\Event\login;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Historial;
 class SuccessfulLogin
 {
     /**
@@ -13,9 +16,9 @@ class SuccessfulLogin
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        //
+        $this->request = $request;
     }
 
     /**
@@ -25,7 +28,13 @@ class SuccessfulLogin
      * @return void
      */
     public function handle(login $event)
-    {
-        //
+    {    
+        $historial = new Historial();
+        $historial->usuario_id = Auth::id();
+        $historial->date_login = Carbon::now();
+        $historial->direccion =$this->request->ip();
+        $historial->save();
+
+
     }
 }
