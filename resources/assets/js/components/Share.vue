@@ -326,7 +326,7 @@
                 //Actualiza la página actual
                 me.pagination.current_page = page;
                 //Envia la petición para visualizar la data de esa página
-                me.listarDocumento(page,buscar,criterio);
+                me.listarDocumento(page,me.buscar,me.criterio);
             },
             
             deleteDocumento(id){
@@ -442,7 +442,7 @@
     .mostrar{
         display:list-item !important;
         opacity: 1 !important;
-        position:absolute !important;
+        position:fixed !important;
         background-color: #3c29297a !important;
 
     }

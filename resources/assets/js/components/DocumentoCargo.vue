@@ -169,7 +169,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
                                     <div class="col-md-9">
-                                        <p  v-text="descripcion"  class="form-control"></p>
+                                        <textarea  v-text="descripcion"  class="form-control"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -454,7 +454,7 @@
     .mostrar{
         display:list-item !important;
         opacity: 1 !important;
-        position:absolute !important;
+        position:fixed !important;
         background-color: #3c29297a !important;
 
     }

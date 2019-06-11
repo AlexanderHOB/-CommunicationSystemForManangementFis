@@ -242,7 +242,7 @@
                 //Actualiza la página actual
                 me.pagination.current_page = page;
                 //Envia la petición para visualizar la data de esa página
-                me.listarProceso(page,buscar,criterio);
+                me.listarProceso(page,me.buscar,me.criterio);
             },
             registrarProceso(){
                 if(this.validarProceso()){
@@ -435,7 +435,7 @@
     .mostrar{
         display:list-item !important;
         opacity: 1 !important;
-        position:absolute !important;
+        position:fixed !important;
         background-color: #3c29297a !important;
 
     }

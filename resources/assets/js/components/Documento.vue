@@ -63,21 +63,21 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="documento in arrayDocumento" :key="documento.id">
-                                        <td>
-                                            <button type="button" @click="abrirModal('documento','actualizar',documento)" class="btn btn-warning btn-sm" >
+                                        <td style="text-align:center;">
+                                            <button  type="button" @click="abrirModal('documento','actualizar',documento)" class="btn btn-warning btn-sm" >
                                             <i class="icon-pencil"></i>
                                             </button> 
                                             <template v-if="documento.condicion">
-                                                <button type="button" class="btn btn-danger btn-sm" @click="desactivarDocumento(documento.id)">
+                                                <button  type="button" class="btn btn-danger btn-sm" @click="desactivarDocumento(documento.id)">
                                                 <i class="icon-trash"></i>
                                                 </button>
                                             </template>
                                             <template v-else>
-                                                <button type="button" class="btn btn-info btn-sm" @click="activarDocumento(documento.id)">
+                                                <button   type="button" class="btn btn-info btn-sm" @click="activarDocumento(documento.id)">
                                                 <i class="icon-check"></i>
                                                 </button>
                                             </template>                                           
-                                            <button type="button" class="btn btn-info btn-sm" @click="abrirModal('documento','observar',documento)">
+                                            <button   type="button" class="btn btn-info btn-sm" @click="abrirModal('documento','observar',documento)">
                                             <i class="far fa-eye"></i>                                       
                                             </button> 
                                         </td>
@@ -191,7 +191,7 @@
             </div>
             <!--Fin del modal-->
             <!-- Modal Documento-->
-            <div class="modal fade "  tabindex="-1" :class="{'mostrar':modal1}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal fade"  tabindex="-1" :class="{'mostrar':modal1}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-primary modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -342,7 +342,7 @@
                 //Actualiza la página actual
                 me.pagination.current_page = page;
                 //Envia la petición para visualizar la data de esa página
-                me.listarDocumento(page,buscar,criterio);
+                me.listarDocumento(page,me.buscar,me.criterio);
             },
             registrarDocumento(){
                 if(this.validarDocumento()){
@@ -554,9 +554,9 @@
     .mostrar{
         display:list-item !important;
         opacity: 1 !important;
-        position:absolute !important;
+        position:fixed !important;
         background-color: #3c29297a !important;
-
+    
     }
     .div-error{
         display: flex;

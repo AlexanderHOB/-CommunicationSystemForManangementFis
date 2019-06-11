@@ -213,7 +213,7 @@
                 //Actualiza la página actual
                 me.pagination.current_page = page;
                 //Envia la petición para visualizar la data de esa página
-                me.listarTipo(page,buscar,criterio);
+                me.listarTipo(page,me.buscar,me.criterio);
             },
             registrarTipo(){
                 if(this.validarTipo()){
@@ -396,7 +396,7 @@
     .mostrar{
         display:list-item !important;
         opacity: 1 !important;
-        position:absolute !important;
+        position:fixed !important;
         background-color: #3c29297a !important;
 
     }

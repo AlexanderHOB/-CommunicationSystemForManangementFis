@@ -50082,7 +50082,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -50338,7 +50338,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarCargo(page, buscar, criterio);
+            me.listarCargo(page, me.buscar, me.criterio);
         },
         registrarCargo: function registrarCargo() {
             if (this.validarCategoria()) {
@@ -51144,7 +51144,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -51367,7 +51367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarCodigo(page, buscar, criterio);
+            me.listarCodigo(page, me.buscar, me.criterio);
         },
         registrarCodigo: function registrarCodigo() {
             if (this.validarCodigo()) {
@@ -52177,7 +52177,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -52400,7 +52400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarTipo(page, buscar, criterio);
+            me.listarTipo(page, me.buscar, me.criterio);
         },
         registrarTipo: function registrarTipo() {
             if (this.validarTipo()) {
@@ -53209,7 +53209,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -53783,7 +53783,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -54134,7 +54134,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarDocumento(page, buscar, criterio);
+            me.listarDocumento(page, me.buscar, me.criterio);
         },
         registrarDocumento: function registrarDocumento() {
             if (this.validarDocumento()) {
@@ -54455,6 +54455,7 @@ var render = function() {
                     return _c("tr", { key: documento.id }, [
                       _c(
                         "td",
+                        { staticStyle: { "text-align": "center" } },
                         [
                           _c(
                             "button",
@@ -55017,7 +55018,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade ",
+        staticClass: "modal fade",
         class: { mostrar: _vm.modal1 },
         staticStyle: { display: "none" },
         attrs: {
@@ -55249,7 +55250,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -56239,7 +56240,7 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-9" }, [
-                        _c("p", {
+                        _c("textarea", {
                           staticClass: "form-control",
                           domProps: { textContent: _vm._s(_vm.descripcion) }
                         })
@@ -56556,7 +56557,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;  \n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -56842,7 +56843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarPersona(page, buscar, criterio);
+            me.listarPersona(page, me.buscar, me.criterio);
         },
         selectRol: function selectRol() {
             var me = this;
@@ -57973,7 +57974,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -58224,7 +58225,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarProceso(page, buscar, criterio);
+            me.listarProceso(page, me.buscar, me.criterio);
         },
         registrarProceso: function registrarProceso() {
             if (this.validarProceso()) {
@@ -59118,7 +59119,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -59298,7 +59299,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarProceso(page, buscar, criterio);
+            me.listarProceso(page, me.buscar, me.criterio);
         },
         registrarProceso: function registrarProceso() {
             if (this.validarProceso()) {
@@ -59878,7 +59879,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display:list-item !important;\n    opacity: 1 !important;\n    position:fixed !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.text-error{\n    color:red !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -60213,7 +60214,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Actualiza la página actual
             me.pagination.current_page = page;
             //Envia la petición para visualizar la data de esa página
-            me.listarDocumento(page, buscar, criterio);
+            me.listarDocumento(page, me.buscar, me.criterio);
         },
         deleteDocumento: function deleteDocumento(id) {
             var _this = this;
@@ -61066,7 +61067,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(124)
 /* template */
 var __vue_template__ = __webpack_require__(103)
 /* template functional */
@@ -61135,89 +61136,45 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid" }, [
-        _c("h2", { staticClass: "text-center" }, [_vm._v("Comunicados")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col" }, [
-            _c("div", { staticClass: "card text-center" }, [
-              _c("div", { staticClass: "card-header" }, [
-                _vm._v("\n                    Comunicado 1\n                ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [_vm._v("Reunion")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(
-                    "Se realizara una reunion el dia sabado 21 de Diciembre ."
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("Más")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-footer text-muted" }, [
-                _vm._v("\n                    2 dia atras\n                ")
-              ])
-            ])
-          ]),
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }),
           _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("div", { staticClass: "card text-center" }, [
-              _c("div", { staticClass: "card-header" }, [
-                _vm._v("\n                    Comunicado 2\n                ")
+          _c("div", { staticClass: "car-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "card card-chart" }, [
+                  _c("div", { staticClass: "card-header" }, [
+                    _c("h4", [_vm._v("Procesos ")])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-content" }, [
+                    _c("div", { staticClass: "ct-chart" }, [
+                      _c("canvas", { attrs: { id: "ingresos" } })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-footer" }, [
+                    _c("p", [_vm._v("Documentos Actualizados por meses.")])
+                  ])
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [
-                  _vm._v("Proceso de Gestión")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(
-                    "Se presentaron algunos problemas en el proceso de gestion."
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("Go somewhere")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-footer text-muted" }, [
-                _vm._v("\n                    4 dias atras\n                ")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("div", { staticClass: "card text-center" }, [
-              _c("div", { staticClass: "card-header" }, [
-                _vm._v("\n                    Comunicado 3\n                ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [_vm._v("Auditoria")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v("Se realizara una auditoria el dia 19 de diciembre.")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "btn btn-primary", attrs: { href: "#" } },
-                  [_vm._v("Go somewhere")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-footer text-muted" }, [
-                _vm._v("\n                   1 dia atras\n                ")
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "card card-chart" }, [
+                  _c("div", { staticClass: "card-header" }, [
+                    _c("h4", [_vm._v("Ventas")])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-content" }, [
+                    _c("div", { staticClass: "ct-chart" }, [
+                      _c("canvas", { attrs: { id: "ventas" } })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-footer" }, [
+                    _c("p", [_vm._v("Ventas de los últimos meses.")])
+                  ])
+                ])
               ])
             ])
           ])
@@ -61240,6 +61197,250 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            varIngreso: null,
+            charIngreso: null,
+            ingresos: [],
+            varTotalIngreso: [],
+            varMesIngreso: [],
+
+            varVenta: null,
+            charVenta: null,
+            ventas: [],
+            varTotalVenta: [],
+            varMesVenta: []
+        };
+    },
+
+    methods: {
+        getIngresos: function getIngresos() {
+            var me = this;
+            var url = '/dashboard';
+            axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.ingresos = respuesta.ingresos;
+                //cargamos los datos del chart
+                me.loadIngresos();
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getVentas: function getVentas() {
+            var me = this;
+            var url = '/dashboard';
+            axios.get(url).then(function (response) {
+                var respuesta = response.data;
+                me.ventas = respuesta.ventas;
+                //cargamos los datos del chart
+                me.loadVentas();
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        loadIngresos: function loadIngresos() {
+            var me = this;
+            var meses = ["Lunes", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            me.ingresos.map(function (x) {
+                me.varMesIngreso.push(x.dia + ' ' + meses[x.mes - 1]);
+                me.varTotalIngreso.push(x.cantidad);
+            });
+            me.varIngreso = document.getElementById('ingresos').getContext('2d');
+
+            me.charIngreso = new Chart(me.varIngreso, {
+                type: 'bar',
+                data: {
+                    labels: me.varMesIngreso,
+                    datasets: [{
+                        label: 'Actualizaciones',
+                        data: me.varTotalIngreso,
+                        backgroundColor: 'rgba(54,162,245,0.9)',
+                        borderColor: 'rgba(255, 99, 132, 0.2)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        },
+        loadVentas: function loadVentas() {
+            var me = this;
+            var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            me.ventas.map(function (x) {
+                me.varMesVenta.push(meses[x.mes - 1]);
+                me.varTotalVenta.push(x.total);
+            });
+            me.varVenta = document.getElementById('ventas').getContext('2d');
+
+            me.charVenta = new Chart(me.varVenta, {
+                type: 'bar',
+                data: {
+                    labels: me.varMesVenta,
+                    datasets: [{
+                        label: 'Ventas',
+                        data: me.varTotalVenta,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 0.2)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getIngresos();
+        this.getVentas();
+    }
+});
 
 /***/ })
 /******/ ]);

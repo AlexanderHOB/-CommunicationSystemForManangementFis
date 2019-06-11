@@ -30,9 +30,9 @@
                         </li>
                     </ul>
                 </li>
-                <li @click="menu=9" class="nav-item">
+                {{-- <li @click="menu=9" class="nav-item">
                             <a class="nav-link" href="main.html"><i class="fas fa-file-excel"></i> Doc interno <span class="badge badge-danger">Obsoleto</span></a>
-                        </li>
+                </li> --}}
                 
                 <li class="nav-item" @click="menu=12">
                     <a class="nav-link" href="main.html"><i class="icon-book-open"></i> Ayuda <span class="badge badge-danger">PDF</span></a>

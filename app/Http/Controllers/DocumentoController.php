@@ -13,7 +13,7 @@ class DocumentoController extends Controller
         $buscar = $request->buscar;
         $criterio = $request->criterio;
         
-        if ($buscar==''){
+        if ($buscar==''|| $buscar=='undefined' || $criterio=='undefined'){
             $documentos = Documento::join('tipoDeDocumentos','documentos.idtipodocumento','=','tipoDeDocumentos.id')
             ->join('procesos','documentos.idproceso','=','procesos.id')
             ->select('documentos.id','documentos.idtipodocumento','documentos.idproceso','documentos.nombre','documentos.descripcion','documentos.ubicacion','documentos.condicion','tipoDeDocumentos.nombre as nombre_tipo','procesos.nombre as nombre_proceso')
@@ -22,7 +22,7 @@ class DocumentoController extends Controller
         else{
             $documentos = Documento::join('tipoDeDocumentos','documentos.idtipodocumento','=','tipoDeDocumentos.id')
             ->select('documentos.id','documentos.idtipodocumento','documentos.idproceso','documentos.nombre','documentos.descripcion','documentos.ubicacion','documentos.condicion','tipoDeDocumentos.nombre as nombre_tipo')
-            ->where('articulos.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')
+            ->where('documentos.'.$criterio, 'like', '%'. $buscar . '%')->orderBy('id', 'desc')
             ->orderBy('documentos.id', 'desc')->paginate(10);
         }
         return[

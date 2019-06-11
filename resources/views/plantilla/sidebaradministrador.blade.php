@@ -62,9 +62,9 @@
                         </li>
                     </ul>
                 </li>
-                <li @click="menu=9" class="nav-item">
+                {{-- <li @click="menu=9" class="nav-item">
                             <a class="nav-link" href="main.html"><i class="fas fa-file-excel"></i> Doc interno <span class="badge badge-danger">Obsoleto</span></a>
-                        </li>
+                </li> --}}
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-people"></i> Acceso</a>
                     <ul class="nav-dropdown-items">
